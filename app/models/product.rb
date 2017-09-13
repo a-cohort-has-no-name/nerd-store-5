@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   belongs_to :supplier
+  has_many :images
 
   # def supplier
   #   puts "get the supplier instance that matches this product"

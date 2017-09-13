@@ -11,10 +11,10 @@
                 Price: <input type="text" name="price">
               </div>
               <div>
-                Image: <input type="text" name="image">
+                Description: <input type="text" name="description"> 
               </div>
               <div>
-                Description: <input type="text" name="description"> 
+                Supplier: <%= collection_select :supplier, :supplier_id, Supplier.all, :id, :name %>
               </div>
               <input type="submit" value="Process New Nerdiness">
             <% end %>

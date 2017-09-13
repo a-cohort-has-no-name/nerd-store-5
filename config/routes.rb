@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   patch '/products/:id' => 'products#update'
   delete '/products/:id' => 'products#destroy'
   post '/search' => 'products#search'
+  get '/products/:product_id/images/new' => 'images#new'
+  post '/products/:product_id/images' => 'images#create'
 end
