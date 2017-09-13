@@ -1,19 +1,9 @@
 class Product < ActiveRecord::Base
+  belongs_to :supplier
 
-  # def sale_message
-  #   if price.to_f <= 2
-  #     "Discount Item!"
-  #   else
-  #     "Everyday Value!"
-  #   end
-  # end
-
-  # def sale_message_class_name
-  #   if sale_message == "Discount Item!"
-  #     "discount-item"
-  #   else
-  #     ""
-  #   end
+  # def supplier
+  #   puts "get the supplier instance that matches this product"
+  #   Product.where(supplier_id: id)
   # end
 
   def tax

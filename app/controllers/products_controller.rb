@@ -19,7 +19,8 @@ class ProductsController < ApplicationController
       name: params[:name],
       description: params[:description],
       image: params[:image],
-      price: params[:price]
+      price: params[:price],
+      supplier_id: 1
     )
     flash[:success] = "Product Created"
     redirect_to "/products/#{@product.id}"

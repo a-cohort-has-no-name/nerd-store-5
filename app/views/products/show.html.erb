@@ -3,6 +3,7 @@
       <div class="col-sm-8 col-sm-offset-2">
         <div class="product_single">
             <h2><%= @product.name %></h2>
+            <h3>Supplied by: <%= @product.supplier.name %></h3>
 
             <% if @product.discounted? %>
               <h4 class="discount-item">Discount Item!</h4>
