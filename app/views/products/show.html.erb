@@ -24,6 +24,22 @@
             <%= link_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success" %>
             <%= link_to "Add Image", "/products/#{@product.id}/images/new", class: "btn btn-info" %>
             <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
+
+
+            <h3>Order this product:</h3>
+            <%= form_tag '/orders', method: :post do %>
+              <div>
+                <%= hidden_field_tag :product_id, @product.id %>
+              </div>
+              <div>
+                <%= label_tag :quantity %>
+                <%= number_field_tag :quantity %>
+              </div>
+              <div>
+                <%= submit_tag "Create Order" %>
+              </div>
+            <% end %>
+
         </div>
       </div>
     </div>

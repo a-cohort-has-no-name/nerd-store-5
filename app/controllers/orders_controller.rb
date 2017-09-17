@@ -1,7 +1,4 @@
 class OrdersController < ApplicationController
-  def new
-    render :new
-  end
 
   def create
     product_id = params[:product_id]
