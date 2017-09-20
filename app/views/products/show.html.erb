@@ -26,8 +26,8 @@
             <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
 
 
-            <h3>Order this product:</h3>
-            <%= form_tag '/orders', method: :post do %>
+            <h3>Add product to cart:</h3>
+            <%= form_tag '/carted_products', method: :post do %>
               <div>
                 <%= hidden_field_tag :product_id, @product.id %>
               </div>
@@ -36,7 +36,7 @@
                 <%= number_field_tag :quantity %>
               </div>
               <div>
-                <%= submit_tag "Create Order" %>
+                <%= submit_tag "Add To Cart" %>
               </div>
             <% end %>
 

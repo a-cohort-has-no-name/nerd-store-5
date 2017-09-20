@@ -1,11 +1,14 @@
 €<h1>Order #<%= @order.id %></h1>
 
 <h3>Purchased By: <%= @order.user.email %></h3>
-<h3>Product Name: <%= @order.product.name %></h3>
 <h3>Purchased At: <%= @order.created_at.strftime("%b %e, %l:%M %p") %></h3>
-<h3>Quantity: <%= @order.quantity %></h3>
-<h3>Subtotal: <%= @order.subtotal %></h3>
-<h3>Tax: <%= @order.tax %></h3>
-<h3>Total: <%= @order.total %></h3>
+<h3>Subtotal: <%= number_to_currency(@order.subtotal) %></h3>
+<h3>Tax: <%= number_to_currency(@order.tax) %></h3>
+<h3>Total: <%= number_to_currency(@order.total) %></h3>
 
-<img src="<%= @order.product.images.first.url %>" alt="">
+<% @order.carted_products.each do |carted_product| %>
+  <h3>Product: <%= carted_product.product.name %></h3>
+  <h4>Quantity: <%= carted_product.quantity %></h4>
+  <img src="<%= carted_product.product.images.first.url %>" alt="">
+<% end %>
+

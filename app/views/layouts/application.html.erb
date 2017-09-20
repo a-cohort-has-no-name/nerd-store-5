@@ -43,6 +43,10 @@
             <li><a href="/products?category=<%= category.title %>"><%= category.title %></a></li>
             <% end %>
 
+            <li class="divider"></li>
+
+            <li><a href="/carted_products">My Cart - <%= @cart_count %></a></li>
+
           </ul>
         </li>
       </ul>
