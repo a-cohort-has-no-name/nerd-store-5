@@ -20,7 +20,12 @@ class ProductsController < ApplicationController
   end
 
   def new
-    render "new.html.erb"
+    if current_user && current_user.admin
+      render "new.html.erb"
+    else
+      flash[:warning] = "You are not authorized to do this"
+      redirect_to "/"
+    end
   end
 
   def create

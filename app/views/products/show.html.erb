@@ -21,10 +21,12 @@
             <% end %>
             
             <p>Description: <%= @product.description %></p>
+
+            <% if current_user && current_user.admin %>
             <%= link_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success" %>
             <%= link_to "Add Image", "/products/#{@product.id}/images/new", class: "btn btn-info" %>
             <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
-
+            <% end %>
 
             <h3>Add product to cart:</h3>
             <%= form_tag '/carted_products', method: :post do %>
