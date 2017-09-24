@@ -1,5 +1,7 @@
 class CartedProductsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
     CartedProduct.create(
       user_id: current_user.id,
@@ -12,7 +14,7 @@ class CartedProductsController < ApplicationController
   def index
     #show carted products that belong to current_user and have status of carted
     # @carted_products = CartedProduct.where(user_id: current_user.id, status: "carted")
-    if current_user && current_user.carted_products.where(status: "carted").any?
+    if current_user.carted_products.where(status: "carted").any?
       @carted_products = current_user.carted_products.where(status: "carted") 
       render :index
     else

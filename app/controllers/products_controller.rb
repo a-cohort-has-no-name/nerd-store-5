@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+
+  before_action :authenticate_admin!, except: [:index, :show, :search]
+
   def index
     if session[:count] == nil
       session[:count] = 0
@@ -20,12 +23,7 @@ class ProductsController < ApplicationController
   end
 
   def new
-    if current_user && current_user.admin
-      render "new.html.erb"
-    else
-      flash[:warning] = "You are not authorized to do this"
-      redirect_to "/"
-    end
+    render "new.html.erb"
   end
 
   def create

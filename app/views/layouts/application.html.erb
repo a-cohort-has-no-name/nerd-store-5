@@ -33,6 +33,14 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></span></a>
           <ul class="dropdown-menu" role="menu">
             
+            <% if current_user %>
+            <li><a href="/logout">Logout</a></li>
+            <% else %>
+            <li><a href="/signup">Sign Up</a></li>
+            <li><a href="/login">Login</a></li>
+            <% end %>
+
+            <li class="divider"></li>
             <% if current_user && current_user.admin %>
             <li><%= link_to "Add New Product", "products/new", class: "btn btn-default" %></li>
             <% end %>

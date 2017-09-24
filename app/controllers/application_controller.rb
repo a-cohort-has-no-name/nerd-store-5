@@ -6,6 +6,17 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def authenticate_user!
+    redirect_to "/login" unless current_user
+  end
+
+  def authenticate_admin!
+    unless current_user && current_user.admin
+      flash[:warning] = "You are not authorized!"
+      redirect_to "/"
+    end
+  end
+
   before_action :calculate_cart_count
 
   private ############
