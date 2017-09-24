@@ -7,6 +7,10 @@ class Product < ActiveRecord::Base
   has_many :carted_products
   has_many :orders, through: :carted_products
 
+  validates :name, :price, :description, presence: true
+  validates :price, numericality: true
+  validates :description, length: { maximum: 500 }
+
   # def supplier
   #   puts "get the supplier instance that matches this product"
   #   Product.where(supplier_id: id)
