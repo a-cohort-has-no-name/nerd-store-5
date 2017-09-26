@@ -35,10 +35,10 @@ class ProductsController < ApplicationController
       price: params[:price],
       supplier_id: supplier_id
     )
-    if @product.save
+    if @product.save #happy path
       flash[:success] = "Product Created"
       redirect_to "/products/#{@product.id}"
-    else
+    else #sad path
       render :new
     end
   end
@@ -60,14 +60,16 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find_by(id: params[:id])
-    @product.update(
-      name: params[:name],
-      description: params[:description],
-      image: params[:image],
-      price: params[:price]
-    )
-    flash[:success] = "Product Updated"
-    redirect_to "/products/#{@product.id}"
+    @product.name = params[:name]
+    @product.description = params[:description]
+    @product.price = params[:price]
+    # @product.supplier_id = params[:supplier_id]
+    if @product.save #happy path
+      flash[:success] = "Product Updated"
+      redirect_to "/products/#{@product.id}"
+    else #sad path
+      render :edit
+    end
   end
 
   def destroy
